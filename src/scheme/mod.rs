@@ -188,8 +188,8 @@ impl TvcFrst {
     }
 }
 
-// tvc_none#a8775f2f = TvmSmc;
-// tvc_frst#ece10b0d code:^Cell meta:(Maybe ^Metadata) = TvmSmc;
+// tvc_none = TvmSmc;
+// tvc_frst code:^Cell meta:(Maybe ^Metadata) = TvmSmc;
 #[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub enum TvmSmc {
     #[default]
@@ -198,8 +198,8 @@ pub enum TvmSmc {
 }
 
 impl TvmSmc {
-    const TVC_NONE_TAG: u32 = 0xa8775f2f;
-    const TVC_FRST_TAG: u32 = 0xece10b0d;
+    const TVC_NONE_TAG: u32 = 0xfa90fdb2;
+    const TVC_FRST_TAG: u32 = 0xb96aa11b;
 
     fn tvc_frst_from_slice(slice: &mut SliceData) -> ton_types::Result<Self> {
         let code = Cell::construct_from_cell(slice.reference(0)?)?;
@@ -253,14 +253,14 @@ impl Deserializable for TvmSmc {
     }
 }
 
-// tvc#0167f70c tvc:TvmSmc = TVC;
+// tvc tvc:TvmSmc = TVC;
 #[derive(Clone, Debug, Default, Eq, PartialEq)]
 pub struct TVC {
     pub tvc: TvmSmc,
 }
 
 impl TVC {
-    const TLB_TAG: u32 = 0x0167f70c;
+    const TLB_TAG: u32 = 0x8b5f2433;
 
     pub fn new(tvc: TvmSmc) -> Self {
         Self { tvc }

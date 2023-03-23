@@ -15,11 +15,9 @@ metadata#_ sold:^Version linker:^Version
         compiled_at:uint64 name:SmallStr
         desc:StrCont = Metadata;
 
-tvc_none#a8775f2f = TvmSmc;
-tvc_frst#ece10b0d code:^Cell meta:(Maybe ^Metadata) = TvmSmc;
-
-tvc#0167f70c tvc:TvmSmc = TVC;
-
-// crc32 <(printf "tvc_none") == a8775f2f
-// crc32 <(printf "tvc_frst") == ece10b0d
-// crc32 <(printf "tvc")      == 0167f70c
+// crc32 <(printf "tvc_none = TvmSmc") == fa90fdb2
+tvc_none#fa90fdb2 = TvmSmc;
+// crc32 <(printf "tvc_frst code:^Cell meta:Maybe ^Metadata = TvmSmc") == b96aa11b
+tvc_frst#b96aa11b code:^Cell meta:(Maybe ^Metadata) = TvmSmc;
+// crc32 <(printf "tvc tvc:TvmSmc = TVC") == 8b5f2433
+tvc#8b5f2433 tvc:TvmSmc = TVC;
