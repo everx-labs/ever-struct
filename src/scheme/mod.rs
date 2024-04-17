@@ -15,7 +15,7 @@
 */
 
 use ever_block::{
-    fail, BuilderData, Cell, Deserializible, IBitstring, Result, Serializible, SliceData,
+    fail, BuilderData, Cell, Deserializable, IBitstring, Result, Serializable, SliceData,
 };
 
 #[derive(Debug, failure::Fail)]
