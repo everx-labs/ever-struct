@@ -14,8 +14,9 @@
     limitations under the License.
 */
 
-use ever_block::{Deserializable, Serializable};
-use ever_block::{fail, BuilderData, Cell, IBitstring, Result, SliceData};
+use ever_block::{
+    fail, BuilderData, Cell, Deserializible, IBitstring, Result, Serializible, SliceData,
+};
 
 #[derive(Debug, failure::Fail)]
 pub enum DeserializationError {
@@ -98,7 +99,7 @@ pub fn slice_load_string_ref(slice: &mut SliceData) -> Result<String> {
 }
 
 impl Serializable for TVC {
-    fn write_to(&self, builder: &mut BuilderData) -> ever_block::Result<()> {
+    fn write_to(&self, builder: &mut BuilderData) -> Result<()> {
         builder.append_u32(Self::TVC_TAG)?;
 
         if let Some(c) = &self.code {
@@ -120,7 +121,7 @@ impl Serializable for TVC {
 }
 
 impl Deserializable for TVC {
-    fn read_from(&mut self, slice: &mut SliceData) -> ever_block::Result<()> {
+    fn read_from(&mut self, slice: &mut SliceData) -> Result<()> {
         let tag = slice.get_next_u32()?;
         if tag != Self::TVC_TAG {
             return Err(DeserializationError::UnexpectedTLBTag.into());
