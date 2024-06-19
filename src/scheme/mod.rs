@@ -18,9 +18,9 @@ use ever_block::{
     fail, BuilderData, Cell, Deserializable, IBitstring, Result, Serializable, SliceData,
 };
 
-#[derive(Debug, failure::Fail)]
+#[derive(Debug, thiserror::Error)]
 pub enum DeserializationError {
-    #[fail(display = "unexpected tlb tag")]
+    #[error("unexpected tlb tag")]
     UnexpectedTLBTag,
 }
 
@@ -124,7 +124,7 @@ impl Deserializable for TVC {
     fn read_from(&mut self, slice: &mut SliceData) -> Result<()> {
         let tag = slice.get_next_u32()?;
         if tag != Self::TVC_TAG {
-            return Err(DeserializationError::UnexpectedTLBTag.into());
+            fail!(DeserializationError::UnexpectedTLBTag);
         }
 
         if slice.get_next_bit()? {
