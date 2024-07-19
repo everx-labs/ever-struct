@@ -5,10 +5,10 @@ license = 'Apache-2.0'
 name = 'ever-struct'
 repository = 'https://github.com/everx-labs/ever-struct'
 rust-version = '1.65'
-version = '1.1.6'
+version = '1.1.7'
 
 [dependencies]
 anyhow = '1.0'
 thiserror = '1.0'
-ever_block = { git = 'https://github.com/everx-labs/ever-block.git', tag = '1.11.5' }
+ever_block = { git = 'https://github.com/everx-labs/ever-block.git', tag = '1.11.6' }
 
